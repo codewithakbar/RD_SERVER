@@ -1,5 +1,5 @@
 import io
-from flask import Flask, Response, request, jsonify, render_template
+from flask import Flask, Response, Blueprint, request, jsonify, render_template
 
 try:
   from werkzeug.wsgi import FileWrapper
@@ -11,6 +11,23 @@ global STATE
 STATE = {}
 
 app = Flask(__name__)
+admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
+
+''' Admin '''
+
+@admin_bp.route('/sessions')
+def admin_sessions():
+    connected_sessions = []
+    for key, session in STATE.items():
+        connected_sessions.append({
+            'key': key,
+            'filename': session['filename'],
+            'events_count': len(session['events'])
+        })
+    
+    return render_template('session.html', sessions=connected_sessions)
+
+app.register_blueprint(admin_bp)
 
 ''' Client '''
 

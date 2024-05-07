@@ -131,7 +131,7 @@ def main(host=DEFAULT_HOST, key=None):
         # free
         mem_dc.DeleteDC()
         win32gui.DeleteObject(screenshot.GetHandle())
-        time.sleep(0.2)
+        time.sleep(0.1)
 
 if __name__ == '__main__':
     main()

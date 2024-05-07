@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connected Sessions</title>
+</head>
+<body>
+    <h1>Connected Sessions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Session Key</th>
+                <th>Filename</th>
+                <th>Events Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for session in sessions %}
+            <tr>
+                <td>{{ session.key }}</td>
+                <td>{{ session.filename }}</td>
+                <td>{{ session.events_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
