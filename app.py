@@ -101,6 +101,13 @@ def events_get():
   return jsonify({'events': events_to_execute})
 
 
+@app.route('/get_keys', methods=['GET'])
+def key_events_get():
+  events_to_execute = list(STATE.items())  # Convert dict_items to a list
+  return jsonify({'keys': events_to_execute})
+
+
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
   # app.run()
