@@ -1,5 +1,6 @@
 import io
 from flask import Flask, Response, Blueprint, request, jsonify, render_template
+from flask_cors import CORS, cross_origin
 
 try:
   from werkzeug.wsgi import FileWrapper
@@ -11,6 +12,7 @@ global STATE
 STATE = {}
 
 app = Flask(__name__)
+CORS(app)
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
 ''' Admin '''
