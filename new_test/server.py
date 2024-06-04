@@ -16,7 +16,7 @@ def handle_client(client_socket):
             break
     client_socket.close()
 
-def start_server(host='127.0.0.1', port=65432):
+def start_server(host='192.168.50.50', port=65432):
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
     server.listen(5)
