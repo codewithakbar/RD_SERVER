@@ -24,7 +24,7 @@ def execute_command(command):
         output = str(e)
     return output
 
-def start_client(host='127.0.0.1', port=65432):
+def start_client(host='192.168.50.50', port=65432):
     while True:
         client = connect_to_server(host, port)
         if client:

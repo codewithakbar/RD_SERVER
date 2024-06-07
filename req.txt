@@ -5,3 +5,7 @@ flask-cors
 pywin32
 Pillow
 requests
+
+numpy
+mss
+opencv-python
