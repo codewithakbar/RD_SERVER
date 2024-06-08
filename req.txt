@@ -9,3 +9,5 @@ requests
 numpy
 mss
 opencv-python
+
+pywebview

