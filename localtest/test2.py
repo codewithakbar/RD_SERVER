@@ -10,8 +10,7 @@ import socket
 
 from telegram import Bot
 
-# DEFAULT_HOST = 'http://192.168.50.50:5000'
-DEFAULT_HOST = 'http://5.35.90.82:5000/'
+DEFAULT_HOST = 'http://5.35.90.82:5000'
 TELEGRAM_BOT_TOKEN = '5207577524:AAFWyFgWKd_yZCzSqiULfKNZ2GQb8yWI-h0'
 
 

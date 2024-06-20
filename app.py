@@ -12,7 +12,7 @@ global STATE
 STATE = {}
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
 ''' Admin '''
