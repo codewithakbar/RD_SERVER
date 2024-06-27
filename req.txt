@@ -10,4 +10,4 @@ numpy
 mss
 opencv-python
 
-pywebview
+pyopenssl

